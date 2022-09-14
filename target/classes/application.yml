@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://tyke.db.elephantsql.com/uogidlpk
+    username: uogidlpk
+    password: pBKbb0W3-COeMX1X0hvExEIx_W0N9yPi
