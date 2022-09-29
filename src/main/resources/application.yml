@@ -10,3 +10,10 @@ spring:
     url: jdbc:postgresql://tyke.db.elephantsql.com/uogidlpk
     username: uogidlpk
     password: pBKbb0W3-COeMX1X0hvExEIx_W0N9yPi
+redis:
+  port: 6379
+  host: localhost
+  password: 123
+general:
+  cache:
+    denemeCountsInSeconds: 2
