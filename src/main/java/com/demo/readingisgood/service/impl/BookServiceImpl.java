@@ -3,6 +3,7 @@ package com.demo.readingisgood.service.impl;
 import com.demo.readingisgood.configuration.EnumMessages;
 import com.demo.readingisgood.configuration.RestApiException;
 import com.demo.readingisgood.entity.Book;
+import com.demo.readingisgood.entity.dto.BookDto;
 import com.demo.readingisgood.repository.BookRepository;
 import com.demo.readingisgood.request.CreatingBookRequest;
 import com.demo.readingisgood.request.UpdatingBookRequest;
@@ -62,7 +63,7 @@ public class BookServiceImpl implements BookService {
                 .orElseThrow(() -> new Exception("Book not found with id: " + id));
         bookRepository.delete(deleteBook);
     }
-    @Cacheable(value=CACHE_METHOD, key="#id")
+
     public Book getById(long id) throws Exception {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new Exception("Book not found with id: " + id));
@@ -94,7 +95,21 @@ public class BookServiceImpl implements BookService {
             throw new Exception("The books with this" + notUpdatedBooks + "could not be updated.");
         }
     }
-}
+        @Cacheable(value=CACHE_METHOD, key="#authorName")
+        public List<BookDto> getBookByAuthor (String authorName) {
+            List<Book> bookList = bookRepository.findAllByAuthor(authorName);
+            return bookList
+                    .stream()
+                    .map(book -> BookDto.builder()
+                            .id(book.getId())
+                            .author(book.getAuthor())
+                            .name(book.getName())
+                            .quantity(book.getQuantity())
+                            .build())
+                            .collect(Collectors.toList());
+        }
+    }
+
 
 
 

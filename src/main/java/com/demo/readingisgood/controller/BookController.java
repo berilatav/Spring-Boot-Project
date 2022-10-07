@@ -2,6 +2,7 @@ package com.demo.readingisgood.controller;
 
 import com.demo.readingisgood.entity.Book;
 import com.demo.readingisgood.entity.Customer;
+import com.demo.readingisgood.entity.dto.BookDto;
 import com.demo.readingisgood.request.CreatingBookRequest;
 import com.demo.readingisgood.request.UpdatingBookRequest;
 import com.demo.readingisgood.service.BookService;
@@ -47,6 +48,11 @@ public class BookController {
     @PutMapping("/update-list")
     public void updateBooks(@RequestBody List<UpdatingBookRequest> updatingBookRequest) throws Exception{
         bookService.updateBooks(updatingBookRequest);
+    }
+
+    @GetMapping("/by-name")
+    public List<BookDto> getBookByName(@RequestParam String authorName){
+        return bookService.getBookByAuthor(authorName);
     }
 }
 

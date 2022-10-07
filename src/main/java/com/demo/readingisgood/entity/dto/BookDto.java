@@ -1,12 +1,16 @@
 package com.demo.readingisgood.entity.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+
+import java.io.Serializable;
 
 @Data
-@RequiredArgsConstructor
-public class BookDto {
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@Builder
+public class BookDto implements Serializable {
 
     private long id;
     private String name;

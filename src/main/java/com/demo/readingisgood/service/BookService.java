@@ -1,6 +1,7 @@
 package com.demo.readingisgood.service;
 
 import com.demo.readingisgood.entity.Book;
+import com.demo.readingisgood.entity.dto.BookDto;
 import com.demo.readingisgood.repository.BookRepository;
 import com.demo.readingisgood.request.CreatingBookRequest;
 import com.demo.readingisgood.request.UpdatingBookRequest;
@@ -25,6 +26,6 @@ public interface BookService {
 
     void updateBooks(List<UpdatingBookRequest> updatingBookRequest) throws Exception;
 
-
+    public List<BookDto> getBookByAuthor (String authorName);
 
 }
