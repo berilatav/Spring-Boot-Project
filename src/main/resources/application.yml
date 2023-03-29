@@ -1,19 +1,27 @@
+server:
+  port: 8020
+
 spring:
   jpa:
-    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
       ddl-auto: update
   datasource:
-    platform: postgres
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://tyke.db.elephantsql.com/uogidlpk
-    username: uogidlpk
-    password: pBKbb0W3-COeMX1X0hvExEIx_W0N9yPi
+    url: jdbc:postgresql://localhost:6534/rigdb
+    username: postgres
+    password: postgres
+    maximum-pool-size: 3
+    minimum-idle: 3
 redis:
   port: 6379
   host: localhost
-  password: 123
+  password: beril123
 general:
   cache:
     denemeCountsInSeconds: 2
+springdoc:
+  packagesToScan: com.demo.readingisgood
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLED:true}
+    path: /swagger-ui

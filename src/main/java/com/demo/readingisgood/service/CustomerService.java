@@ -2,7 +2,6 @@ package com.demo.readingisgood.service;
 
 import com.demo.readingisgood.entity.Customer;
 import com.demo.readingisgood.request.CreatingCustomerRequest;
-import com.demo.readingisgood.request.UpdatingBookRequest;
 import com.demo.readingisgood.request.UpdatingCustomerRequest;
 
 import java.util.List;

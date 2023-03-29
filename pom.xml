@@ -4,15 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>ReadingIsGood</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.demo.readingisgood</groupId>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.1</version>
     </parent>
+
+    <artifactId>docker-springboot-postgresql</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>docker-springboot-postgresql</name>
+    <description>Docker, Postgres and Spring Boot</description>
 
     <dependencies>
         <dependency>
@@ -49,11 +52,23 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${openapi.version}</version>
+        </dependency>
 
     </dependencies>
 
     <properties>
         <java.version>11</java.version>
+        <openapi.version>1.6.9</openapi.version>
     </properties>
 
     <build>

@@ -1,6 +1,5 @@
 package com.demo.readingisgood.request;
 
-
 import lombok.Getter;
 import lombok.Setter;
 

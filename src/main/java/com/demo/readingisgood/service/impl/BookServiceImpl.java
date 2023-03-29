@@ -8,7 +8,7 @@ import com.demo.readingisgood.repository.BookRepository;
 import com.demo.readingisgood.request.CreatingBookRequest;
 import com.demo.readingisgood.request.UpdatingBookRequest;
 import com.demo.readingisgood.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +19,13 @@ import java.util.stream.Collectors;
 
 import static com.demo.readingisgood.configuration.RedisConfiguration.CACHE_METHOD;
 
+@RequiredArgsConstructor
 @Service
 public class BookServiceImpl implements BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+
+    private final BookRepository bookRepository;
+
 
     public void createBook(CreatingBookRequest creatingBookRequest) {
 
@@ -86,6 +88,7 @@ public class BookServiceImpl implements BookService {
                 updateBook(book);
 
             } catch (Exception e) {
+
                 notUpdatedBooks.add(book.getId());
             }
         }
@@ -108,7 +111,26 @@ public class BookServiceImpl implements BookService {
                             .build())
                             .collect(Collectors.toList());
         }
-    }
+
+        // TODO Bu methodu dto şeklinde yaz ve map, stream
+        public List<BookDto> getAll() throws Exception {
+            List<Book> bookList = bookRepository.findAll();
+            if (bookList.isEmpty()) {
+                throw new Exception("There is no current book list.");
+            }
+           return bookList
+            .stream()
+                    .map(book -> BookDto.builder()
+                            .id(book.getId())
+                            .author(book.getAuthor())
+                            .name(book.getName())
+                            .quantity(book.getQuantity())
+                            .build())
+                    .collect(Collectors.toList());
+        }
+
+}
+
 
 
 

@@ -2,12 +2,9 @@ package com.demo.readingisgood.service;
 
 import com.demo.readingisgood.entity.Book;
 import com.demo.readingisgood.entity.dto.BookDto;
-import com.demo.readingisgood.repository.BookRepository;
 import com.demo.readingisgood.request.CreatingBookRequest;
 import com.demo.readingisgood.request.UpdatingBookRequest;
-import com.demo.readingisgood.request.UpdatingCustomerRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -26,6 +23,8 @@ public interface BookService {
 
     void updateBooks(List<UpdatingBookRequest> updatingBookRequest) throws Exception;
 
-    public List<BookDto> getBookByAuthor (String authorName);
+    List<BookDto> getBookByAuthor (String authorName);
+
+    List<BookDto> getAll() throws Exception;
 
 }

@@ -1,12 +1,10 @@
 package com.demo.readingisgood.service;
 
-import com.demo.readingisgood.entity.Customer;
 import com.demo.readingisgood.entity.Order;
-import com.demo.readingisgood.repository.OrderRepository;
 import com.demo.readingisgood.request.CreatingOrderRequest;
 import com.demo.readingisgood.request.UpdatingOrderRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
+
 
 import java.util.List;
 
